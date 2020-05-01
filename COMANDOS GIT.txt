@@ -1,0 +1,284 @@
+git init - inicia a linha do tempo
+git add - adiciona ou atualiza mudanças para um determinado momento da linha do tempo
+git commit - adiciona um ponto na linha do tempo
+git log - visualiza os pontos na linha do tempo
+git status - informa o estado das alterações do projeto
+git show - apresenta determinado ponto na história
+git branch - gerencia novas linhas do tempo
+git checkout - manipula as linhas do tempo
+git merge - unir linhas do tempo 
+git push - envia alterações locais para o repositório remoto
+git clone - clonar projeto / repositório
+git pull - puxa do repositório remoto
+ 
+***************************************************
+
+
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ ls
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ touch a.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ touch b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ ls
+a.txt  b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git add *
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ ls
+a.txt  b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   a.txt
+        new file:   b.txt
+
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git commit -m "criados a.txt e b.txt"
+[master (root-commit) 2193209] criados a.txt e b.txt
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.txt
+ create mode 100644 b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ ls
+a.txt  b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log
+commit 21932099dbf2d7d015744a5158b0f9c34c618004 (HEAD -> master)
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:23:52 2020 -0300
+
+    criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ touch c.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ code .
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --online
+fatal: unrecognized argument: --online
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --on line
+fatal: ambiguous argument 'line': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   a.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        c.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git add *
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   a.txt
+        new file:   c.txt
+
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git commit -m "modificado a.txt e criado o arquivo c.txt"
+[master 621b3fd] modificado a.txt e criado o arquivo c.txt
+ 2 files changed, 1 insertion(+)
+ create mode 100644 c.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git  log
+commit 621b3fd4ee293d8b56f26b02cff1ca6e1489a5bc (HEAD -> master)
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:32:34 2020 -0300
+
+    modificado a.txt e criado o arquivo c.txt
+
+commit 21932099dbf2d7d015744a5158b0f9c34c618004
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:23:52 2020 -0300
+
+    criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --online
+fatal: unrecognized argument: --online
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log
+commit 621b3fd4ee293d8b56f26b02cff1ca6e1489a5bc (HEAD -> master)
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:32:34 2020 -0300
+
+    modificado a.txt e criado o arquivo c.txt
+
+commit 21932099dbf2d7d015744a5158b0f9c34c618004
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:23:52 2020 -0300
+
+    criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --online
+fatal: unrecognized argument: --online
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --oneline
+621b3fd (HEAD -> master) modificado a.txt e criado o arquivo c.txt
+2193209 criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$
+
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --graph
+* commit 621b3fd4ee293d8b56f26b02cff1ca6e1489a5bc (HEAD -> master)
+| Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+| Date:   Fri May 1 09:32:34 2020 -0300
+|
+|     modificado a.txt e criado o arquivo c.txt
+|
+* commit 21932099dbf2d7d015744a5158b0f9c34c618004
+  Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+  Date:   Fri May 1 09:23:52 2020 -0300
+
+      criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git commit -am "a.txt adicionei"
+On branch master
+nothing to commit, working tree clean
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log
+commit 621b3fd4ee293d8b56f26b02cff1ca6e1489a5bc (HEAD -> master)
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:32:34 2020 -0300
+
+    modificado a.txt e criado o arquivo c.txt
+
+commit 21932099dbf2d7d015744a5158b0f9c34c618004
+Author: Alberto Gomes <albertogomesdasilva@gmail.com>
+Date:   Fri May 1 09:23:52 2020 -0300
+
+    criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git commit -am "a.txt adicionei"
+On branch master
+nothing to commit, working tree clean
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git commit -am "a.txt adicionei"
+[master 958451a] a.txt adicionei
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git branch
+* master
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git log --oneline
+958451a (HEAD -> master) a.txt adicionei
+621b3fd modificado a.txt e criado o arquivo c.txt
+2193209 criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$ git checkout 2193209
+Note: switching to '2193209'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 2193209 criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 ((2193209...))
+$ git log --oneline
+2193209 (HEAD) criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 ((2193209...))
+$ git log --oneline
+2193209 (HEAD) criados a.txt e b.txt
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 ((2193209...))
+$ git branch
+* (HEAD detached at 2193209)
+  master
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 ((2193209...))
+$ git checkou master
+git: 'checkou' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 ((2193209...))
+$ git checkou 'master'
+git: 'checkou' is not a git command. See 'git --help'.
+
+The most similar command is
+        checkout
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 ((2193209...))
+$ git checkout 'master'
+Previous HEAD position was 2193209 criados a.txt e b.txt
+Switched to branch 'master'
+
+Administrador@DESKTOP-B67T38O MINGW64 ~/OneDrive/maio2020 (master)
+$
